@@ -1,22 +1,10 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jan 31 18:19:02 2023
-
-@author: Yunus
-"""
-# source: https://statso.io/instagram-reach-analysis-case-study/
-# https://thecleverprogrammer.com/2022/03/22/instagram-reach-analysis-using-python/
-
-# pip install wordcloud
-
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
 import plotly.io as pio
-# pio.renderers.default='svg'
+
 pio.renderers.default='browser'
 
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
@@ -40,21 +28,21 @@ data.info()
 plt.figure(figsize=(10, 8))
 plt.style.use('fivethirtyeight')
 plt.title("Distribution of Impressions From Home")
-# sns.distplot(data['From Home'])
+
 sns.histplot(data['From Home'], kde = True)
 plt.show()
 
 # distribution of the impressions received from hashtags
 plt.figure(figsize=(10, 8))
 plt.title("Distribution of Impressions From Hashtags")
-# sns.distplot(data['From Hashtags'])
+
 sns.histplot(data['From Hashtags'], kde = True)
 plt.show()
 
 # distribution of impressions received from the explore section of Instagram
 plt.figure(figsize=(10, 8))
 plt.title("Distribution of Impressions From Explore")
-# sns.distplot(data['From Explore'])
+
 sns.histplot(data['From Explore'], kde = True)
 plt.show()
 
@@ -125,9 +113,7 @@ figure.show()
 x = np.array(data[['Likes', 'Saves', 'Comments', 'Shares', 'Profile Visits', 'Follows']])
 y = np.array(data["Impressions"])
 
-xtrain, xtest, ytrain, ytest = train_test_split(x, y, 
-                                                test_size=0.2, 
-                                                random_state=42)
+xtrain, xtest, ytrain, ytest = train_test_split(x, y, test_size=0.2,random_state=42)
 
 # Machine learning model to predict the reach of an Instagram post
 model = PassiveAggressiveRegressor()
